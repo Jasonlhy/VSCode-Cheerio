@@ -31,16 +31,21 @@ export function activate(context: vscode.ExtensionContext) {
             let range = new vscode.Range(editor.selection.start, editor.selection.end)
             let data = editor.document.getText(range);
 
-            // it auto wraps inside body in 1.0 version
             try {
-                let $ = cheerio.load(data);
+                // decodeEntities set to false because I don't want to encode Chinese and entity again
+                // Just decoded version of HTML
+                // Reason: https://github.com/cheeriojs/cheerio/issues/1198
+                let $ = cheerio.load(data, {
+                    decodeEntities: false     
+                });
                 eval(command);
+
+                // it auto wraps inside body in 1.0 version
                 let result = $('body').html();
                 console.log(result);
                 await editor.edit(editorBuilder => {
                     editorBuilder.replace(range, result);
                 });
-
             } catch (error) {
                 console.error(error);
                 vscode.window.showInformationMessage('cheerio error: ' + error.message);

@@ -1,6 +1,6 @@
 # Objective
 
-Integrate cheerio with vscode editor to manipulate HTML, cheerio provide method like jQuery to manipulate the HTML.
+Integrate cheerio with vscode editor to manipulate HTML, cheerio provide method like jQuery to manipulate the HTML, it can be useful for doing some tedious task such as adding class(es), removing class(es) to some elements.
 
 ## Features
 
@@ -18,7 +18,23 @@ Integrate cheerio with vscode editor to manipulate HTML, cheerio provide method 
 
 Please read [cheerio github](https://github.com/cheeriojs/cheerio) for API reference
 
+## Limitation
+1. The highlighted element should be a valid first children under `<body>` tag.
+Therefore, if you highlight somethings like, it will not work, you need to wrap them under a table.
+
+```
+<tr>
+    <td>cell1</td>
+</tr>    
+```
+
+2. The resulting HTML is always decoded, no entities will be found.
+
 ## Release Notes
+
+### 1.1.0 - 2018-05-30
+
+Support Chinese and use HTML mode instead of XML mode
 
 ### 1.0.0 - 2018-05-29
 

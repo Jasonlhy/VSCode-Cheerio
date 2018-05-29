@@ -1,8 +1,8 @@
 {
     "name": "vscode-cheerio",
     "displayName": "vscode-cheerio",
-    "description": "Integrate cheerio with vscode editor to manipulate HTML",
-    "version": "1.0.0",
+    "description": "Integrate cheerio with vscode editor to manipulate HTML, save times for tedious tasks",
+    "version": "1.1.0",
     "publisher": "jasonlhy",
     "engines": {
         "vscode": "^1.23.0"
