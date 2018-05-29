@@ -33,12 +33,9 @@ export function activate(context: vscode.ExtensionContext) {
 
             // it auto wraps inside body in 1.0 version
             try {
-                let $ = cheerio.load(data, {
-                    xmlMode: true
-                });
-                
+                let $ = cheerio.load(data);
                 eval(command);
-                let result = $.html();
+                let result = $('body').html();
                 console.log(result);
                 await editor.edit(editorBuilder => {
                     editorBuilder.replace(range, result);
